@@ -41,7 +41,7 @@ left alone.
 ## Install (Claude Code)
 
 ```
-/plugin marketplace add <your-username>/topknot
+/plugin marketplace add neilbo/topknot
 /plugin install topknot@topknot
 ```
 
