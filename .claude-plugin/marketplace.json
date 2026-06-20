@@ -2,8 +2,8 @@
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "topknot",
   "description": "Design-systems lead for AI agents. The token is the source of truth; everything else is a copy waiting to drift.",
-  "owner": { "name": "Neil", "url": "https://github.com/" },
+  "owner": { "name": "Neil", "url": "https://github.com/neilbo" },
   "plugins": [
-    { "name": "topknot", "description": "Forces every value through the token ladder and reports Figma-vs-code drift.", "source": "./", "category": "productivity" }
+    { "name": "topknot", "description": "Forces every value through the token ladder and reports Figma-vs-code drift.", "source": "./", "category": "productivity", "license": "MIT", "repository": "https://github.com/neilbo/topknot", "keywords": ["design-tokens", "design-systems", "figma", "drift", "css"] }
   ]
 }
