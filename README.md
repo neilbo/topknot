@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" width="220" alt="TopKnot, the design-systems lead">
+</p>
+
 # TopKnot
 
 *He looks at the button. He looks at Figma. He says one word: "drift."*
