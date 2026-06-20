@@ -1,0 +1,7 @@
+{
+  "name": "topknot",
+  "version": "0.1.0",
+  "description": "Design-systems lead mode. The token is the source of truth: reuse before inventing, compose before raw, and hunt drift between Figma and code.",
+  "author": { "name": "Neil", "url": "https://github.com/" },
+  "hooks": "./hooks/claude-codex-hooks.json"
+}

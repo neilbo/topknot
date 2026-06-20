@@ -1,0 +1,12 @@
+{
+  "name": "topknot",
+  "version": "0.1.0",
+  "description": "Design-systems lead mode for AI agents. Token is the source of truth; hunts Figma-vs-code drift.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "topknot-tokens": "./scripts/extract-code-tokens.mjs",
+    "topknot-shoot": "./scripts/shoot.mjs"
+  },
+  "optionalDependencies": { "playwright": "^1.40.0" }
+}
