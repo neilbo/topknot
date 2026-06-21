@@ -18,8 +18,18 @@ Figma says and what the code shipped.
 
 - **Enforces the token ladder** on every value you write (color, spacing, type, radius, shadow, motion).
 - **`/topknot-diff`** — pulls tokens from Figma and from your repo, matches them by name, lists every drift one line at a time.
+- **`/topknot-match`** — matches a Figma screen/component (and its nested components) against what the dev actually rendered, element by element, and redlines every misalignment. Catches the **mis-bind**: the right element using the *wrong* token.
 - **`/topknot-report`** — the diff plus Playwright screenshots, assembled into one self-contained HTML report so you can *see* where the drift lands.
 - **`/topknot-audit`** — scans the whole repo for raw values that should be tokens.
+
+### Token drift vs. design drift
+
+`/topknot-diff` compares the token *dictionary* (Figma vars vs code tokens).
+`/topknot-match` compares *application* — whether each rendered element uses the
+value the design intended. Only `match` catches a validly-defined token applied to
+the wrong element, off-spec spacing/type, or a design node that was never built.
+See [`docs/visual-adherence-plan.md`](docs/visual-adherence-plan.md) for the roadmap
+(Figma write-back and a designer Chrome extension are planned follow-ups).
 
 ## The token ladder
 
@@ -64,12 +74,36 @@ node scripts/shoot.mjs http://localhost:3000 --selector ".btn-primary" --out btn
 Pull the Figma side via the Figma MCP (`get_variable_defs`) or an exported
 `variables.json`, then let `/topknot-diff` match them.
 
+## Design adherence, by hand
+
+The `match` pipeline is four standalone scripts — extract each side to the same
+spec shape, diff, redline:
+
+```bash
+# design side: Figma REST nodes JSON -> spec tree (offline)
+node scripts/figma-spec.mjs nodes.json --vars variables.json > design.json
+
+# render side: walk the live DOM -> spec tree (needs Playwright)
+node scripts/render-spec.mjs http://localhost:3000 --selector ".card" \
+  --tokens code-tokens.json > render.json
+
+# diff design vs render, then redline the result into one HTML file
+node scripts/visual-diff.mjs design.json render.json --json > diff.json
+node scripts/redline.mjs diff.json --shot card.png --out redline.html
+```
+
+Tag elements with `data-topknot="<figma-node-id>"` for exact matching; without it,
+nodes are matched heuristically and each finding carries a confidence. See
+[`examples/redline-sample.html`](examples/redline-sample.html) for sample output
+and `npm test` for the seeded-drift check.
+
 ## Commands
 
 | Command | What it does |
 |---------|--------------|
 | `/topknot [lite\|full\|ultra]` | Set intensity, or report current level. |
 | `/topknot-diff` | Compare Figma vs code tokens, list every drift. |
+| `/topknot-match` | Match a Figma screen/component vs the rendered build, element by element; redline the misalignments. |
 | `/topknot-report` | Diff + Playwright screenshots into one HTML drift report. |
 | `/topknot-audit` | Scan the whole repo for raw values that should be tokens. |
 | `/topknot-help` | Quick reference. |

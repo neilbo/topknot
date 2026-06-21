@@ -6,7 +6,14 @@
   "type": "module",
   "bin": {
     "topknot-tokens": "./scripts/extract-code-tokens.mjs",
-    "topknot-shoot": "./scripts/shoot.mjs"
+    "topknot-shoot": "./scripts/shoot.mjs",
+    "topknot-figma-spec": "./scripts/figma-spec.mjs",
+    "topknot-render-spec": "./scripts/render-spec.mjs",
+    "topknot-visual-diff": "./scripts/visual-diff.mjs",
+    "topknot-redline": "./scripts/redline.mjs"
+  },
+  "scripts": {
+    "test": "node --test"
   },
   "optionalDependencies": { "playwright": "^1.40.0" }
 }
