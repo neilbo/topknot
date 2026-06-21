@@ -32,3 +32,14 @@ radius, shadow, or motion. Default level: full. Off: "stop topknot".
 One-off values used exactly once (mark raw), vendor CSS you don't own, anything
 explicitly hardcoded by request. Token changes leave the smallest check that
 fails if they break (a build erroring on an undefined `var()` counts).
+
+## Design adherence (the match pass)
+
+Token alignment ≠ design adherence. A validly-defined token applied to the wrong
+element (a **mis-bind**) passes a token diff and still misses the design. To check
+the build against a Figma screen/component element-by-element, extract both sides
+to one spec shape and diff: `scripts/figma-spec.mjs` (design) + `scripts/render-spec.mjs`
+(rendered DOM) → `scripts/visual-diff.mjs` → `scripts/redline.mjs` (annotated HTML).
+Tag elements with `data-topknot="<figma-node-id>"` for exact matching; otherwise
+matches are heuristic and every finding carries a confidence. Figma is the source
+of truth unless told otherwise. Skill host: `/topknot-match`.

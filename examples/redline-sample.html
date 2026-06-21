@@ -1,0 +1,72 @@
+<!doctype html><meta charset="utf-8"><title>TopKnot redline — Upgrade card</title>
+<style>
+:root{font:14px/1.45 -apple-system,Segoe UI,Roboto,sans-serif;color:#1e2327}
+body{margin:0;background:#0f1115;color:#e8eaed}
+.wrap{max-width:1100px;margin:0 auto;padding:24px}
+h1{font-size:18px;margin:0 0 2px} .meta{color:#9aa0a6;font-size:12px;margin-bottom:16px}
+.net{display:inline-block;background:#1a1d23;border:1px solid #2a2e37;border-radius:6px;padding:6px 10px;margin-bottom:16px;font-size:13px}
+.grid{display:grid;grid-template-columns:minmax(280px,420px) 1fr;gap:20px;align-items:start}
+.shot{position:relative;border:1px solid #2a2e37;border-radius:8px;overflow:hidden;background:#15171c}
+.shot img{width:100%;display:block}
+.wfnote{position:absolute;top:8px;left:8px;font-size:11px;color:#6b7280;z-index:2}
+.mk{position:absolute;border:2px solid;border-radius:3px;box-sizing:border-box}
+.mk.wf{background:rgba(255,255,255,.02)}
+.pin{position:absolute;top:-11px;left:-11px;width:20px;height:20px;border-radius:50%;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{text-align:left;padding:7px 9px;border-bottom:1px solid #21252d;vertical-align:top}
+th{color:#9aa0a6;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+td.n{color:#6b7280;width:24px} .mono{font-family:ui-monospace,Menlo,monospace;font-size:12px}
+.sel{color:#6b7280;font-size:11px;margin-top:2px}
+.tag{color:#fff;border-radius:4px;padding:1px 6px;font-size:11px;font-weight:600}
+.sw{display:inline-block;width:11px;height:11px;border-radius:2px;border:1px solid #0006;margin-right:5px;vertical-align:-1px}
+.legend{margin-top:18px;color:#9aa0a6;font-size:11px;display:flex;flex-wrap:wrap;gap:12px}
+.lg b{color:#cbd1d8}
+tr.sev-high td{background:rgba(229,72,77,.06)}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+</style>
+<div class="wrap">
+  <h1>TopKnot redline — Upgrade card</h1>
+  <div class="meta">design vs code · 2026-06-21</div>
+  <div class="net">net: 1 mis-bind, 1 geom, 1 type, 1 missing-node · matched 4/5, 0 low-confidence</div>
+  <div class="grid">
+    <div><div class="shot wfstage" style="aspect-ratio:112/36"><span class="wfnote">schematic — no screenshot (pass --shot for the live render)</span><div class="mk" style="left:0%;top:0%;width:100%;height:100%;border-color:#e5484d">
+        <span class="pin" style="background:#e5484d">1</span></div><div class="mk" style="left:0%;top:0%;width:100%;height:100%;border-color:#f5a623">
+        <span class="pin" style="background:#f5a623">2</span></div><div class="mk" style="left:21.428571428571427%;top:22.22222222222222%;width:57.14285714285714%;height:55.55555555555556%;border-color:#f5a623">
+        <span class="pin" style="background:#f5a623">3</span></div></div></div>
+    <div>
+      <table>
+        <thead><tr><th>#</th><th>tag</th><th>node.prop</th><th>design</th><th>code</th><th>fix</th></tr></thead>
+        <tbody><tr class="sev-high">
+    <td class="n">1</td>
+    <td><span class="tag" style="background:#e5484d">mis-bind</span></td>
+    <td class="mono">button.bg<div class="sel">[data-topknot=&quot;button&quot;]</div></td>
+    <td><span class="sw" style="background:#fa8072"></span><span class="mono">#fa8072 (--color-accent)</span></td>
+    <td><span class="sw" style="background:#ff6b6b"></span><span class="mono">#ff6b6b</span></td>
+    <td>apply --color-accent</td>
+  </tr><tr class="sev-medium">
+    <td class="n">2</td>
+    <td><span class="tag" style="background:#f5a623">geom</span></td>
+    <td class="mono">button.padding<div class="sel">[data-topknot=&quot;button&quot;]</div></td>
+    <td><span class="mono">8/16/8/16</span></td>
+    <td><span class="mono">8/12/8/12</span></td>
+    <td>match design padding</td>
+  </tr><tr class="sev-medium">
+    <td class="n">3</td>
+    <td><span class="tag" style="background:#f5a623">type</span></td>
+    <td class="mono">label.font<div class="sel">[data-topknot=&quot;label&quot;]</div></td>
+    <td><span class="mono">600 14px inter</span></td>
+    <td><span class="mono">500 14px inter</span></td>
+    <td>weight 600→500</td>
+  </tr><tr class="sev-high">
+    <td class="n">4</td>
+    <td><span class="tag" style="background:#e5484d">missing-node</span></td>
+    <td class="mono">badge.—</td>
+    <td><span class="mono">badge &quot;New&quot;</span></td>
+    <td><span class="mono">no confident render match</span></td>
+    <td>build it, or tag with data-topknot if it exists</td>
+  </tr></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="legend"><span class="lg"><b>mis-bind</b> wrong token/value on the right element</span><span class="lg"><b>drift</b> value differs from design</span><span class="lg"><b>geom</b> spacing / size / radius off</span><span class="lg"><b>type</b> typography off</span><span class="lg"><b>effect</b> shadow / opacity off</span><span class="lg"><b>missing-node</b> in design, not rendered</span><span class="lg"><b>extra-node</b> rendered, not in design</span></div>
+</div>

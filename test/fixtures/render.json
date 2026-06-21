@@ -1,0 +1,48 @@
+{
+  "id": "card", "role": "card", "text": null, "selector": "[data-topknot=\"card\"]",
+  "box": { "x": 0, "y": 0, "w": 320, "h": 160 },
+  "styles": {
+    "color": null, "bg": "#1e2327",
+    "padding": { "t": 16, "r": 16, "b": 16, "l": 16 },
+    "gap": 12, "radius": 8, "font": { "family": null, "size": null, "weight": null, "line": null, "spacing": null },
+    "shadow": null, "opacity": 1
+  },
+  "tokenRefs": { "color": null, "bg": "--color-surface", "radius": "--radius-md", "gap": "--space-3" },
+  "children": [
+    {
+      "id": "title", "role": "title", "text": "Upgrade", "selector": "[data-topknot=\"title\"]",
+      "box": { "x": 16, "y": 16, "w": 200, "h": 24 },
+      "styles": {
+        "color": "#e8eaed", "bg": null, "padding": { "t": 0, "r": 0, "b": 0, "l": 0 }, "gap": null, "radius": null,
+        "font": { "family": "inter", "size": 18, "weight": 600, "line": 24, "spacing": 0 },
+        "shadow": null, "opacity": 1
+      },
+      "tokenRefs": { "color": "--color-text", "bg": null, "radius": null, "gap": null },
+      "children": []
+    },
+    {
+      "id": "button", "role": "button", "text": null, "selector": "[data-topknot=\"button\"]",
+      "box": { "x": 16, "y": 110, "w": 112, "h": 36 },
+      "styles": {
+        "color": null, "bg": "#ff6b6b",
+        "padding": { "t": 8, "r": 12, "b": 8, "l": 12 },
+        "gap": null, "radius": 6, "font": { "family": null, "size": null, "weight": null, "line": null, "spacing": null },
+        "shadow": null, "opacity": 1
+      },
+      "tokenRefs": { "color": null, "bg": null, "radius": "--radius-sm", "gap": null },
+      "children": [
+        {
+          "id": "label", "role": "label", "text": "Buy", "selector": "[data-topknot=\"label\"]",
+          "box": { "x": 40, "y": 118, "w": 64, "h": 20 },
+          "styles": {
+            "color": "#ffffff", "bg": null, "padding": { "t": 0, "r": 0, "b": 0, "l": 0 }, "gap": null, "radius": null,
+            "font": { "family": "inter", "size": 14, "weight": 500, "line": 20, "spacing": 0 },
+            "shadow": null, "opacity": 1
+          },
+          "tokenRefs": { "color": null, "bg": null, "radius": null, "gap": null },
+          "children": []
+        }
+      ]
+    }
+  ]
+}
